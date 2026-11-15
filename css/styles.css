@@ -382,3 +382,9 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 
 /* Mockup notice: remove this rule, the .mockup-banner paragraphs and the robots meta tags before going live */
 .mockup-banner { margin: 0; padding: .5rem var(--gutter); background: var(--brass); color: var(--navy); font-size: .85rem; font-weight: 500; text-align: center; max-width: none; }
+
+/* Photos (AI-generated mockup images in assets/img) */
+.about-photo { display: block; width: 100%; height: 100%; min-height: 360px; max-height: 560px; object-fit: cover; border: 1px solid var(--brass); }
+.g-item img { display: block; width: 100%; height: auto; border: 1px solid var(--brass); transition: transform .35s; background: var(--navy-soft); }
+.g-item:hover img, .g-item:focus-visible img { transform: scale(1.015); }
+.lb-img { display: block; width: 100%; max-height: 70vh; object-fit: contain; background: var(--navy-deep); }

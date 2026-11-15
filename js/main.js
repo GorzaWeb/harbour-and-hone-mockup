@@ -39,8 +39,7 @@
   const dialog = document.getElementById('lightbox');
   const items = [...document.querySelectorAll('.g-item')];
   if (dialog && items.length) {
-    const ph = dialog.querySelector('.ph');
-    const label = dialog.querySelector('.lb-label');
+    const img = dialog.querySelector('.lb-img');
     const caption = dialog.querySelector('figcaption');
     const counter = dialog.querySelector('.lb-count');
     let index = 0;
@@ -48,10 +47,8 @@
     const show = (i) => {
       index = (i + items.length) % items.length;
       const src = items[index];
-      const tone = src.dataset.tone || '';
-      ph.className = 'ph' + (tone ? ' ph--' + tone : '');
-      ph.setAttribute('aria-label', src.dataset.alt);
-      label.textContent = 'Photo placeholder: ' + src.dataset.alt;
+      img.src = src.dataset.src;
+      img.alt = src.dataset.alt;
       caption.textContent = src.dataset.caption;
       counter.textContent = `${index + 1} of ${items.length}`;
     };
