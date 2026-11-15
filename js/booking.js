@@ -11,7 +11,9 @@
   const DAY_NAMES = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
   const iso = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
-  const today = new Date();
+  // The shop's clock, not the visitor's: a Date whose local fields read as UK time.
+  const ukNow = () => new Date(new Date().toLocaleString('en-US', { timeZone: 'Europe/London' }));
+  const today = ukNow();
   date.min = iso(today);
   const max = new Date(today); max.setDate(max.getDate() + 60);
   date.max = iso(max);
@@ -32,7 +34,7 @@
     if (day === null) { slotBox.innerHTML = '<p class="slots-empty">Pick a date to see available times.</p>'; return; }
     const slots = slotsFor(day, durationOf());
     if (!slots.length) { slotBox.innerHTML = '<p class="slots-empty">We’re closed on Mondays. Please choose another day.</p>'; return; }
-    const now = new Date();
+    const now = ukNow();
     const isToday = date.value === iso(now);
     const nowMin = now.getHours() * 60 + now.getMinutes();
     slots.forEach((s) => {
@@ -44,7 +46,7 @@
     if (!slotBox.children.length) slotBox.innerHTML = '<p class="slots-empty">No times left today. Please choose another day.</p>';
   }
 
-  service.addEventListener('change', renderSlots);
+  service.addEventListener('change', () => { if (date.value) validateDate(); renderSlots(); });
   date.addEventListener('change', () => { validateDate(); renderSlots(); });
   renderSlots();
 
@@ -62,7 +64,7 @@
     const name = form.elements.name, phone = form.elements.phone;
     const ok = [
       setError(name, name.value.trim().length >= 2 ? '' : 'Enter your name.'),
-      setError(phone, /^[+()\d\s-]{10,}$/.test(phone.value.trim()) ? '' : 'Enter a phone number we can reach you on.'),
+      setError(phone, phone.value.replace(/\D/g, '').length >= 10 ? '' : 'Enter a phone number we can reach you on.'),
       setError(service, service.value ? '' : 'Choose a service.'),
       validateDate(),
     ];

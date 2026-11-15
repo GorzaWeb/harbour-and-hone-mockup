@@ -380,5 +380,5 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
 }
 
-/* Mockup notice: remove this rule, the .mockup-banner paragraphs, the robots meta tags and robots.txt before going live */
+/* Mockup notice: remove this rule, the .mockup-banner paragraphs and the robots meta tags before going live */
 .mockup-banner { margin: 0; padding: .5rem var(--gutter); background: var(--brass); color: var(--navy); font-size: .85rem; font-weight: 500; text-align: center; max-width: none; }

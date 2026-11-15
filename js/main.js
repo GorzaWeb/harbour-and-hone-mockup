@@ -17,7 +17,7 @@
   }
 
   // Highlight today in any hours table (rows carry data-day = JS getDay() index)
-  const today = new Date().getDay();
+  const today = new Date(new Date().toLocaleString('en-US', { timeZone: 'Europe/London' })).getDay(); // shop's day, not visitor's
   document.querySelectorAll(`.hours tr[data-day="${today}"]`).forEach((tr) => tr.classList.add('is-today'));
 
   document.querySelectorAll('[data-year]').forEach((el) => { el.textContent = new Date().getFullYear(); });
