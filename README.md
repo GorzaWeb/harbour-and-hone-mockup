@@ -6,7 +6,7 @@
 
 A concept website for a fictional neighbourhood barbershop in Cardiff Bay.
 
-### [🔗 View the live site](https://gorzaweba.github.io/harbour-and-hone-mockup/)
+### [🔗 View the live site](https://gorzaweb.github.io/harbour-and-hone-mockup/)
 
 ![HTML](https://img.shields.io/badge/HTML5-14213D?style=for-the-badge&logo=html5&logoColor=B08D57)
 ![CSS](https://img.shields.io/badge/CSS3-14213D?style=for-the-badge&logo=css&logoColor=B08D57)
